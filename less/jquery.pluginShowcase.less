@@ -1,0 +1,64 @@
+.plugin-showcase {
+  background-color: #333;
+  color: #FFF;
+  font-family: "Courier";
+  font-size: 1em;
+
+  .dollar-sign {
+    color: pink;
+  }
+
+  .css-selector {
+    color: #FFD373;
+  }
+
+  .line-nb {
+    margin-right: 10px;
+    color: #777;
+  }
+
+  .value[data-type=boolean],
+  .value[data-type=number] {
+    color: #AA67D5;
+    border-bottom: 1px dotted #AA67D5;
+    cursor: pointer;
+  }
+
+  .value[data-type=boolean]:hover,
+  .value[data-type=number]:hover {
+    color: #DD9AFF;
+    border-bottom-color: #DD9AFF;
+  }
+
+  .value[data-type=text] {
+    color: #FFD373;
+    border-bottom: 1px dotted #FFD373;
+    cursor: pointer;
+  }
+
+  .value[data-type=text]:hover {
+    color: #FFFFA6;
+    border-bottom-color: #FFFFA6;
+  }
+
+  .value input[type=text] {
+    padding: 0;
+    background-color: #333;
+    border: 0;
+    border-bottom: 1px dotted #FFD373;
+    font-size: 1em;
+    outline: none;
+    line-height: 17px;
+    font-family: "Courier";
+    color: #FFD373;
+  }
+
+  .value input[type=text]:focus {
+    color: #FFD373;
+  }
+
+  .value[data-type=number] input[type=text] {
+    color: #AA67D5;
+    border-bottom: 1px dotted #AA67D5;
+  }
+}

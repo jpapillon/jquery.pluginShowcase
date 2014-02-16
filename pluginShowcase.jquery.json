@@ -1,0 +1,27 @@
+{
+  "name": "jquery.pluginShowcase",
+  "version": "0.1.0",
+  "title": "jQuery Plugin Showcase",
+  "author": {
+    "name": "Jeremie Papillon"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "*"
+  },
+  "description": "Showcase your jquery plugin initialization dynamically.",
+  "keywords": [
+    "jquery",
+    "showcase",
+    "plugin",
+    "dynamic",
+    "doc"
+  ],
+  "homepage": "http://jpapillon.github.io/jquery.pluginShowcase/",
+  "download": "https://github.com/jpapillon/jquery.pluginShowcase/"
+}
