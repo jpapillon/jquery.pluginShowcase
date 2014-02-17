@@ -84,20 +84,24 @@
         var parent = elem.parents(".value").first();
 
         var type = parent.data("type");
+        var value = elem.text();
         switch (type) {
           case "text":
-            parent.html('<span class="value-modifier">"<input type="text" value="' + elem.text() + '" />"</span>');
+            parent.html('<span class="value-modifier">"<input type="text" value="' + value + '" />"</span>');
             // Little IE hack, to keep focus on the input
             setTimeout(function(e) {
               parent.find("input[type=text]").focus();
             }, 0);
           break;
           case "number":
-            parent.html('<span class="value-modifier"><input type="text" value="' + elem.text() + '" /></span>');
+            parent.html('<span class="value-modifier"><input type="text" value="' + value + '" /></span>');
             // Little IE hack, to keep focus on the input
             setTimeout(function(e) {
               parent.find("input[type=text]").focus();
             }, 0);
+          case "boolean":
+            elem.text((value === "true") ? "false": "true");
+            self._triggerChange();
           break;
         }
       });
@@ -136,6 +140,7 @@
 
       return attributes;
     },
+
     _triggerChange: function() {
       this.options.onChange(this._getAttributes());
     },
