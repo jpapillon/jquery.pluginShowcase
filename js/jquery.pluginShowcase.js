@@ -16,7 +16,10 @@
       },
       attr2: {
         type: "number",
-        defaultValue: "42"
+        defaultValue: "42",
+        validate: function(value) {
+          return true;
+        }
       },
       attr3: {
         type: "text",
@@ -61,6 +64,11 @@
         content += ",";
       }
 
+      // Add a comment if it was set
+      if (options.attributes[attrName].comment && options.attributes[attrName].comment !== "") {
+        content += '<span class="value-comment"> // ' + options.attributes[attrName].comment + '</span>';
+      }
+
       content += "<br />";
     }
 
@@ -99,6 +107,7 @@
             setTimeout(function(e) {
               parent.find("input[type=text]").focus();
             }, 0);
+          break;
           case "boolean":
             elem.text((value === "true") ? "false": "true");
             self._triggerChange();
@@ -119,7 +128,7 @@
         }
       });
     },
-    _getAttributes: function() {
+    getAttributes: function() {
       var attributes = {};
       this.$container.find(".value").each(function() {
         var elem = $(this);
@@ -129,7 +138,7 @@
             // Don't do anything
           break;
           case "number":
-            value = parseInt(value);
+            value = Number(value);
           break;
           case "boolean":
             value = (value === "true");
@@ -142,7 +151,7 @@
     },
 
     _triggerChange: function() {
-      this.options.onChange(this._getAttributes());
+      this.options.onChange(this.getAttributes());
     },
 
     _triggerChangeInputText: function(input) {
@@ -169,14 +178,17 @@
       var value = elem.find("input[type=text]").val();
 
       var type = parent.data("type");
-      switch (type) {
-        case "number":
-          if (isNaN(value) || value % 1 !== 0) {
-            return false;
-          }
-        break;
+      var validateFn = this.options.attributes[parent.data("name")].validate;
+      if (validateFn) {
+        return validateFn(value);
+      } else {
+        // Default validation
+        switch (type) {
+          case "number":
+            return !isNaN(value);
+          break;
+        }
       }
-
       return true;
     }
   };

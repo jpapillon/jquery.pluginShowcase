@@ -38,17 +38,20 @@
 <script>
 $("#showcase").pluginShowcase({
   attributes: {
-    attr1: {
+    booleanAttribute: {
       type: "boolean",
-      defaultValue: "true"
+      defaultValue: "true",
+      comment: "This is a boolean attribute"
     },
-    attr2: {
+    numberAttribute: {
       type: "number",
-      defaultValue: "42"
+      defaultValue: "42",
+      comment: "This is a number attribute"
     },
-    attr3: {
+    textAttribute: {
       type: "text",
-      defaultValue: "textOption"
+      defaultValue: "textOption",
+      comment: "This is a text attribute"
     }
   },
   onChange: function(attributes) {
